@@ -1,4 +1,6 @@
-import './globals.css'
+import { ThemeProvider } from '@/provider/ThemeProvider'
+import { ColorScheme } from '@mantine/core'
+import { cookies } from 'next/dist/client/components/headers'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,10 +14,16 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+      }) {
+            const cookieStore = cookies()
+            const theme = cookieStore.get('theme')?.value as ColorScheme
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+              <body className={inter.className}>
+                    <ThemeProvider theme={theme}>
+                          {children}
+                    </ThemeProvider>
+              </body>
     </html>
   )
 }
