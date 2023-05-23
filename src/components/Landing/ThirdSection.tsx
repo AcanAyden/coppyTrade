@@ -22,7 +22,7 @@ const float = keyframes`
       transform: translateY(-20px)
 }`
 
-const useStyles = createStyles(() => ({
+const useStyles = createStyles((theme) => ({
   inner: {
     position: "relative",
     background: `url(/assets/images/whalebg.png)`,
@@ -32,31 +32,37 @@ const useStyles = createStyles(() => ({
       },
       whale: {
             animation: `${float} 4s ease-in-out infinite`
-      }
+      },
+      testTitle: {
+            fontSize: "60px",
+            [theme.fn.smallerThan("md")]: {
+              fontSize: "24px",
+            },
+          },
 }));
 
 export const ThirdSection: React.FC = () => {
   const { classes } = useStyles();
   return (
-        <Box h={760} className={classes.inner} pt={90} mb={330} >
-                            <Box pos={"absolute"} w={387} h={469} top={"10%"} left={"10%"} className={classes.whale}>
+        <Box h={{base: "unset", lg : 760}} className={classes.inner} pt={90} mb={330} >
+                            <Box pos={"absolute"} w={{base: 100, lg: 387}} h={{base: 150, lg: 469}} top={"10%"} left={"10%"} className={classes.whale}>
         <Image src={"/assets/images/whale.svg"} fill alt="" />
               </Box>
       <Stack align="center" mb={90}>
-        <Title size={60} color={"white"}>
+        <Title className={classes.testTitle} color={"white"}>
           Sẳn sàng đầu tư?
         </Title>
-        <Title size={60} color={"white"}>
+        <Title className={classes.testTitle} color={"white"}>
           Chúng tôi sẽ lo phần còn lại
         </Title>
       </Stack>
-      <Box w={898} h={505} pos="relative" mx={"auto"}>
+      <Box w={{base: 500, lg:898}} h={{base:300, lg:505}} pos="relative" mr={"auto"} ml={{base: -250, lg: "auto"}}>
         <Image src={"/assets/images/laptop.png"} fill alt="" />
         <Stack align="center" pos={"absolute"} top={30} right={"-22%"}>
           <ScrollAnimation animateIn="animate__fadeInRight" duration={1}>
             <Card
               shadow="sm"
-              padding="lg"
+              p={{base:"sm", lg:"lg"}}
               radius="md"
               withBorder
               bg={`hsla(0,0%,94%,.6)`}>
@@ -67,7 +73,7 @@ export const ThirdSection: React.FC = () => {
                   radius="xl"
                   size={"lg"}
                 />
-                <Box w={376}>
+                <Box w={{base: 300, lg:376}} h={{base: 60, lg:"auto"}}>
                   <Flex justify="space-between" align={"center"}>
                     <Title order={4}>Buy a new house</Title>
                     <Text>09:30 AM</Text>
@@ -88,7 +94,7 @@ export const ThirdSection: React.FC = () => {
             delay={500}>
             <Card
               shadow="sm"
-              padding="lg"
+              p={{base:"sm", lg:"lg"}}
               radius="md"
               withBorder
               bg={`hsla(0,0%,94%,.6)`}>
@@ -99,7 +105,7 @@ export const ThirdSection: React.FC = () => {
                   radius="xl"
                   size={"lg"}
                 />
-                <Box w={376}>
+                <Box w={{base: 300, lg:376}} h={{base: 60, lg:"auto"}}>
                   <Flex justify="space-between" align={"center"}>
                     <Title order={4}>Buy a new car</Title>
                     <Text>09:30 AM</Text>
@@ -125,7 +131,7 @@ export const ThirdSection: React.FC = () => {
             delay={1000}>
             <Card
               shadow="sm"
-              padding="lg"
+              p={{base:"sm", lg:"lg"}}
               radius="md"
               withBorder
               bg={`hsla(0,0%,94%,.6)`}>
@@ -136,7 +142,7 @@ export const ThirdSection: React.FC = () => {
                   radius="xl"
                   size={"lg"}
                 />
-                <Box w={376}>
+                <Box w={{base: 300, lg:376}} h={{base: 60, lg:"auto"}}>
                   <Flex justify="space-between" align={"center"}>
                     <Title order={4}>Buy a new house</Title>
                     <Text>09:30 AM</Text>

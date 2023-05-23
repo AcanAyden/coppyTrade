@@ -8,39 +8,51 @@ import {
   Grid,
   Card,
   SimpleGrid,
+  createStyles,
 } from "@mantine/core";
 import ScrollAnimation from "react-animate-on-scroll";
 import Image from "next/image";
 
+const useStyle = createStyles((theme) => ({
+  testTitle: {
+    fontSize: "48px",
+    [theme.fn.smallerThan("md")]: {
+      fontSize: "24px",
+    },
+  },
+}));
+
 export const SecondSection: React.FC = () => {
+  const { classes } = useStyle();
+
   return (
     <>
       <Box pos={"relative"} mt={30}>
-        <Stack align="center" justify="center" pt={220}>
-          <Group w={"50%"} position="center">
+        <Stack align="center" justify="center" pt={{base: 100, lg: 220}}>
+          <Group w={{base: "100%", lg: "50%"}} position="center" px={{base: 50,lg: 0}}>
             <Group pos={"relative"}>
-              <Box pos={"absolute"} top={"-18rem"} left={"-23rem"}>
+              <Box pos={"absolute"} top={{base:"-12rem", lg: "-18rem"}} left={{base:"-11rem", lg:"-23rem"}}>
                 <ScrollAnimation animateIn="animate__fadeInRight" duration={1}>
-                  <Image
-                    src={"/assets/images/cloud.svg"}
-                    alt=""
-                    width={414}
-                    height={414}
-                  />
+                  <Box
+                    w={{ base: 200, lg: 414 }}
+                    h={{ base: 200, lg: 414 }}
+                    pos={"relative"}>
+                    <Image src={"/assets/images/cloud.svg"} alt="" fill />
+                  </Box>
                 </ScrollAnimation>
               </Box>
 
-              <Title align="center" color="dark" size={48}>
+              <Title align="center" color="dark" className={classes.testTitle}>
                 Giải pháp toàn diện cho nhu cầu giao dịch của bạn.
               </Title>
-              <Box pos={"absolute"} bottom={"-13rem"} right={"-24rem"}>
+              <Box pos={"absolute"} bottom={{base:"-15rem", lg: "-13rem"}} right={{lg:"-24rem", base: "-11rem"}}>
                 <ScrollAnimation animateIn="animate__fadeInLeft">
-                  <Image
-                    src={"/assets/images/cloud.svg"}
-                    alt=""
-                    width={414}
-                    height={414}
-                  />
+                  <Box
+                    w={{ base: 200, lg: 414 }}
+                    h={{ base: 200, lg: 414 }}
+                    pos={"relative"}>
+                    <Image src={"/assets/images/cloud.svg"} alt="" fill />
+                  </Box>
                 </ScrollAnimation>
               </Box>
             </Group>
