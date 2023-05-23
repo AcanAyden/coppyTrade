@@ -4,6 +4,7 @@ import { ColorScheme, ColorSchemeProvider, MantineProvider as  UIProvider} from 
 import { setCookie } from 'cookies-next'
 import type { PropsWithChildren } from 'react'
 import { useCallback, useState } from 'react'
+import "animate.css/animate.min.css";
 
 export const ThemeProvider: React.FC<
   PropsWithChildren & {
@@ -24,9 +25,10 @@ export const ThemeProvider: React.FC<
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-      <UIProvider
+              <UIProvider
+                    withNormalizeCSS withGlobalStyles
         theme={{
-          colorScheme,
+          colorScheme:"light",
           defaultGradient: { from: 'indigo', to: 'cyan' },
           fontSizes: {
             md: '0.85rem',
