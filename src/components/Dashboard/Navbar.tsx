@@ -24,6 +24,7 @@ import {
   IconChevronRight,
 } from "@tabler/icons-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
@@ -53,14 +54,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const mockdata = [
-  { icon: IconHome, label: "Bảng điều khiển" },
-  { icon: IconBriefcase, label: "Danh mục đầu tư" },
-  { icon: IconTargetArrow, label: "Chiếc lượt vốn" },
-  { icon: IconHeartRateMonitor, label: "Chiến lượt tín hiệu" },
-  { icon: IconUsersGroup, label: "Thống kê theo dõi" },
-  { icon: IconArrowsShuffle, label: "Giao dịch thủ công" },
-  { icon: IconBrandUbuntu, label: "Giới thiệu" },
-  { icon: IconAward, label: "Thành viên VIP" },
+  { icon: IconHome, label: "Bảng điều khiển" , link: "/dashboard/"},
+  { icon: IconBriefcase, label: "Danh mục đầu tư" , link: "/dashboard/portfolios"},
+  { icon: IconTargetArrow, label: "Chiếc lượt vốn" , link: "/dashboard/budgetstrategy"},
+  { icon: IconHeartRateMonitor, label: "Chiến lượt tín hiệu" , link: "/dashboard/signal"},
+  { icon: IconUsersGroup, label: "Thống kê theo dõi" , link: "/dashboard/manage"},
+  { icon: IconArrowsShuffle, label: "Giao dịch thủ công" , link: "/dashboard/manualtrade"},
+  { icon: IconBrandUbuntu, label: "Giới thiệu" , link: "/dashboard/referral"},
+  { icon: IconAward, label: "Thành viên VIP" , link: "/dashboard/affiliation"},
 ];
 
 interface NavbarLinkProps {
@@ -68,6 +69,7 @@ interface NavbarLinkProps {
   label: string;
   active?: boolean;
   show: boolean;
+  linkTo: string;
   onClick?(): void;
 }
 
@@ -75,14 +77,18 @@ function NavbarLink({
   icon: Icon,
   label,
   active,
-  show,
+      show,
+  linkTo,
   onClick,
 }: NavbarLinkProps) {
   const { classes, cx } = useStyles();
   return (
     <UnstyledButton
       onClick={onClick}
-      className={cx(classes.link, { [classes.active]: active })}>
+              className={cx(classes.link, { [classes.active]: active })}
+              component={Link}
+              href={linkTo}
+        >
       <Icon size="3rem" stroke={1.5} />
       {show && label}
     </UnstyledButton>
@@ -98,6 +104,7 @@ export const Navbar: React.FC = () => {
       key={link.label}
       active={index === active}
       show={showNav}
+      linkTo={link.link}
       onClick={() => setActive(index)}
     />
   ));
@@ -137,10 +144,11 @@ export const Navbar: React.FC = () => {
       </NavbarUI.Section>
       <NavbarUI.Section>
         <Stack justify="center" spacing={0}>
-          <NavbarLink icon={IconFolder} show={showNav} label="Tài liệu" />
+          <NavbarLink icon={IconFolder} show={showNav} label="Tài liệu" linkTo="/"/>
           <NavbarLink
             icon={IconMessageCircle2}
-            show={showNav}
+                                show={showNav}
+                                linkTo="/"
             label="Liên hệ trợ giúp"
           />
           {showNav && (
