@@ -9,21 +9,13 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 
-const useStyles = createStyles(() => ({
-  textDeco: {
-    "&:before": {
-      content: `""`,
-      background: `url(/assets/images/line.png) no-repeat`,
-      backgroundSize: "cover",
-      display: "block",
-      position: "absolute",
-      width: "278px",
-      height: "28px",
-      transform: `translateX(-50%)`,
-      left: "28%",
-      top: "41%",
-    },
-  },
+const useStyles = createStyles((theme) => ({
+      testTitle: {
+            fontSize: "48px",
+            [theme.fn.smallerThan("md")]: {
+              fontSize: "24px",
+            },
+          },
 }));
 
 export const FiftSection: React.FC = () => {
@@ -31,13 +23,13 @@ export const FiftSection: React.FC = () => {
 
   return (
     <Grid columns={24} mx={0} mb={300}>
-      <Grid.Col lg={12}>
+      <Grid.Col lg={12}  order={2} orderLg={1} orderMd={2}>
         <Stack justify="center" h={"100%"}>
-          <Box pos={"relative"} pl={200} pr={200}>
+          <Box pos={"relative"} px={{base: 20, lg: 200}}>
             <Box w={279} h={279} pos={"absolute"} top={"-50%"} right={"-10%"}>
               <Image src={"/assets/images/animal_2.svg"} alt="" fill />
             </Box>
-            <Title size={48} color="dark" mb={50}>
+            <Title color="dark" mb={50} className={classes.testTitle}>
               Tấm vé đến tự do tài chính của bạn.
             </Title>
             <Text size={"lg"} color="dark" mb={50}>
@@ -51,7 +43,7 @@ export const FiftSection: React.FC = () => {
           </Box>
         </Stack>
       </Grid.Col>
-      <Grid.Col lg={12} pos={"relative"} pr={0}>
+      <Grid.Col lg={12} pos={"relative"} pr={0} order={1} orderLg={2} orderMd={1}>
         <Box w={"100%"} pos={"relative"} h={648}>
           <Image src={"/assets/images/imgRight.png"} alt="" fill />
           <Box w={240} h={250} pos={"absolute"} bottom={"-20%"} left={"-0%"}>

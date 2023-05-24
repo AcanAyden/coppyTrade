@@ -44,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 export const ThirdSection: React.FC = () => {
   const { classes } = useStyles();
   return (
-        <Box h={{base: "unset", lg : 760}} className={classes.inner} pt={90} mb={330} >
+        <Box h={{base: "unset", lg : 760}} className={classes.inner} pt={90} mb={{base: 30, lg: 330}} >
                             <Box pos={"absolute"} w={{base: 100, lg: 387}} h={{base: 150, lg: 469}} top={"10%"} left={"10%"} className={classes.whale}>
         <Image src={"/assets/images/whale.svg"} fill alt="" />
               </Box>
@@ -58,7 +58,7 @@ export const ThirdSection: React.FC = () => {
       </Stack>
       <Box w={{base: 500, lg:898}} h={{base:300, lg:505}} pos="relative" mr={"auto"} ml={{base: -250, lg: "auto"}}>
         <Image src={"/assets/images/laptop.png"} fill alt="" />
-        <Stack align="center" pos={"absolute"} top={30} right={"-22%"}>
+        <Stack align="center" pos={"absolute"} top={{base: -30,lg :30}} right={{base: "-130%", lg: "-22%"}}>
           <ScrollAnimation animateIn="animate__fadeInRight" duration={1}>
             <Card
               shadow="sm"
