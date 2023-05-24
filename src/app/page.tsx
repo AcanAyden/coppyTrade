@@ -44,8 +44,8 @@ export default function Home() {
           <ThirdSection />
           <FourSection />
           <FiftSection />
-                          <LastSetction />
-                          <Footer/>
+          <LastSetction />
+          <Footer />
         </div>
       </div>
     </Container>
