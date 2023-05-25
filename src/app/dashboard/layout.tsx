@@ -13,7 +13,7 @@ const Layout = ({ children }: React.PropsWithChildren) => {
         >
               <Header/>
               {/* <Notice/> */}
-              <div style={{ overflow: "hidden", background:"#F8F8FA", marginInline: "-1rem", paddingInline: "1rem", minHeight: "calc(100vh - 92px)", position: "relative" }}>
+              <div style={{ overflow: "hidden", background:"#F8F8FA", marginInline: "-1rem", paddingInline: "1rem", minHeight: "calc(100vh - 92px)", position: "relative", marginBottom: "-1rem", paddingBottom: "-1rem" }}>
       {children}
       </div>
     </AppShell>
