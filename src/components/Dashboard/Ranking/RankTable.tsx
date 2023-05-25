@@ -6,11 +6,12 @@ import {
   Stack,
   Avatar,
   Flex,
-  Group,
+  MediaQuery,
   Card,
   Table,
+  Group
 } from "@mantine/core";
-import Image from "next/image";
+import React from 'react'
 
 const mockData = [
   {
@@ -32,11 +33,35 @@ const mockData = [
     rank: 3,
   },
   {
-    name: "acan Truong",
+    name: "acan Truong 44",
     point: 275.32,
     total: 7.287,
     rank: 4,
   },
+  {
+      name: "acan Truong",
+      point: 275.32,
+      total: 7.287,
+      rank: 5,
+    },
+    {
+      name: "acan Truong",
+      point: 275.32,
+      total: 7.287,
+      rank: 6,
+    },
+    {
+      name: "acan Truong",
+      point: 275.32,
+      total: 7.287,
+      rank: 7,
+    },
+    {
+      name: "acan Truong",
+      point: 275.32,
+      total: 7.287,
+      rank: 8,
+    },
 ];
 
 const useStyles = createStyles(() => ({
@@ -67,7 +92,7 @@ const useStyles = createStyles(() => ({
     },
   },
   Grid: {
-    "&:first-child": {
+    "&:first-of-type": {
       ".mantine-Card-root": {
         "&:after": {
           background: `url(/assets/images/crown.png),url(/assets/images/rank-1.png)`,
@@ -83,7 +108,7 @@ const useStyles = createStyles(() => ({
         },
       },
     },
-    "&:nth-child(2)": {
+    "&:nth-of-type(2)": {
       ".mantine-Card-root": {
         "&:after": {
           background: `url(/assets/images/rank-2.png)`,
@@ -98,7 +123,7 @@ const useStyles = createStyles(() => ({
         },
       },
     },
-    "&:nth-child(3)": {
+    "&:nth-of-type(3)": {
       ".mantine-Card-root": {
         "&:after": {
           background: `url(/assets/images/rank-3.png)`,
@@ -125,9 +150,9 @@ export const RankTable: React.FC = () => {
           <Grid.Col
             lg={8}
             className={classes.Grid}
-            key={item.name}
+            key={index}
             order={item.rank == 1 ? 2 : item.rank == 2 ? 1 : 3}>
-            <Flex align="flex-end" h="100%" >
+            <Flex align="flex-end" h="100%"  key={index}>
               <Card
                 mx={"auto"}
                 w={"60%"}
@@ -144,7 +169,7 @@ export const RankTable: React.FC = () => {
                   <Avatar
                     src="/assets/images/whalebg.png"
                     alt="it's me"
-                    size={70}
+                    size={60}
                     radius={"xl"}
                     mx={"auto"}
                   />
@@ -167,19 +192,45 @@ export const RankTable: React.FC = () => {
   });
 
       
-const rows = mockData.map((element) => (
-      <tr key={element.name}>
-        <td>{element.name}</td>
-        <td colSpan={5}>{element.point}</td>
-        <td>{element.total}</td>
+const rows = mockData.map((element,index) => {
+      return (
+            <React.Fragment key={index}>
+                  {
+                        index>2&&
+                  <tr >
+        <td style={{width: "10%"}}>#{index + 1}</td>
+        <td style={{width: "90%"}}>
+                  <Flex justify={"space-between"} align={"center"}>
+                  <Flex align={"center"} gap={20}>
+                  <Avatar
+                    src="/assets/images/whalebg.png"
+                    alt="it's me"
+                    size={50}
+                    radius={"xl"}
+                    mx={"auto"}
+                  />
+                  {element.name}
+                  </Flex>
+                  <Box bg={"#F8F8FA"} px={20} style={{borderRadius: "5px"}}>
+                  {element.total}
+                  </Box>
+            </Flex>
+        </td>
       </tr>
-    ));
+                  }
+            </React.Fragment>
+      )
+});
   return (
         <>
+        <MediaQuery smallerThan="md" styles={{display: "none"}}>
               <Grid columns={24} mt={100}>{rank}</Grid>
+        </MediaQuery>
+        <Group  bg="white" p={30} style={{borderRadius: "25px"}}>
               <Table  verticalSpacing="lg" fontSize="xl">
       <tbody>{rows}</tbody>
     </Table>
+    </Group>
         </>
   );
 };

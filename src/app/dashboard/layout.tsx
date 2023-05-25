@@ -12,8 +12,8 @@ const Layout = ({ children }: React.PropsWithChildren) => {
       navbar={<Navbar/>}
         >
               <Header/>
-              <div style={{ overflow: "hidden" }}>
-              <Notice/>
+              {/* <Notice/> */}
+              <div style={{ overflow: "hidden", background:"#F8F8FA", marginInline: "-1rem", paddingInline: "1rem", minHeight: "calc(100vh - 92px)", position: "relative" }}>
       {children}
       </div>
     </AppShell>

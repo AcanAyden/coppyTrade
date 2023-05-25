@@ -37,7 +37,7 @@ const useStyles = createStyles(() => ({
             
       },
       slide:{
-            "&:first-child": {
+            "&:first-of-type": {
                   ".mantine-Card-root": {
                         "&:after": {
                               background: `url(/assets/images/rank-1.png)`,
@@ -51,7 +51,7 @@ const useStyles = createStyles(() => ({
                         }
                   }
             },
-            "&:nth-child(2)": {
+            "&:nth-of-type(2)": {
                   ".mantine-Card-root": {
                         "&:after": {
                               background: `url(/assets/images/rank-2.png)`,
@@ -67,7 +67,7 @@ const useStyles = createStyles(() => ({
                         }
                   }
             },
-            "&:nth-child(3)": {
+            "&:nth-of-type(3)": {
                   ".mantine-Card-root": {
                         "&:after": {
                               background: `url(/assets/images/rank-3.png)`,
@@ -116,8 +116,8 @@ const mockData = [
 export const Ranking: React.FC = () => {
   const { classes } = useStyles();
 
-const cardItem = mockData.map(item=>{
-      return (<Carousel.Slide pos={"relative"}  className={classes.slide}>
+const cardItem = mockData.map((item,index)=>{
+      return (<Carousel.Slide pos={"relative"}  className={classes.slide} key={index}>
       <Card p={20} pt={50} radius={"lg"} className={classes.cardAward} style={{overflow: "unset"}} withBorder>
       <Flex direction={"column"} justify="center" align={"center"}>
         <Text mt={"md"} fw={700}>{item.name}</Text>

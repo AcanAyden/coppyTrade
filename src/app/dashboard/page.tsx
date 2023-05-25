@@ -1,20 +1,34 @@
 "use client";
 import { RankTable } from "@/components/Dashboard/Ranking/RankTable";
 import { Ranking } from "@/components/Dashboard/Ranking/Ranking";
-import { Carousel } from "@mantine/carousel";
 import {
   Box,
   Flex,
   Title,
   createStyles,
   Grid,
-  Card,
+  Text,
   Container,
   Button,
   Tabs,
+  Input,
+  MultiSelect,
+  Group
 } from "@mantine/core";
+import { IconChevronDown } from "@tabler/icons-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
+const data = [
+      { value: 'react', label: 'React' },
+      { value: 'ng', label: 'Angular' },
+      { value: 'svelte', label: 'Svelte' },
+      { value: 'vue', label: 'Vue' },
+      { value: 'riot', label: 'Riot' },
+      { value: 'next', label: 'Next.js' },
+      { value: 'blitz', label: 'Blitz.js' },
+    ];
 
 const useStyle = createStyles(() => ({}));
 
@@ -22,8 +36,8 @@ const Page = () => {
   const { classes } = useStyle();
   return (
     <Container fluid pos="relative" bg={"#F8F8FA"}>
-      <Grid columns={24} w={"100%"} m={0} >
-        <Grid.Col lg={18} style={{overflow: "hidden"}}>
+      <Grid columns={24} w={"100%"} m={0}>
+        <Grid.Col lg={18} style={{ overflow: "hidden" }}>
           <Box
             style={{
               background: `linear-gradient(90.21deg, rgb(0, 157, 120) 3.09%, rgb(12, 12, 12) 88.88%)`,
@@ -55,10 +69,11 @@ const Page = () => {
           <Title color="green.6" mt={100}>
             Gói hiệu quả hàng đầu ✨{" "}
           </Title>
-            <Ranking/>
-         <RankTable/>
+          <Ranking />
+          <RankTable />
         </Grid.Col>
         <Grid.Col lg={6}>
+            <Group bg="white"  p={20} style={{borderRadius: "25px"}}>
           <Box w={"100%"} h={200} pos="relative">
             <Image src={"/assets/images/banner-3.png"} alt="" fill />
           </Box>
@@ -86,19 +101,73 @@ const Page = () => {
               <Tabs.Tab value="messages">Telegram signal</Tabs.Tab>
             </Tabs.List>
             <Tabs.Panel value="gallery" pt="xs">
-              <Box w={"100%"} h={200} pos="relative">
-                <Image src={"/assets/images/bot.png"} alt="" fill />
-              </Box>
+              <Title size={24} mt="lg">
+                bước tiếp theo, chọn loại BOT
+              </Title>
+              <Input
+                component="select"
+                variant="unstyled"
+                size={"xl"}
+                styles={(theme)=> ({
+                  input: {
+                        color:theme.colors.green[6],
+                        fontWeight: 700
+                  }
+                })}
+                rightSection={<IconChevronDown size={14} stroke={1.5} />}>
+                <option value="1">BOT Thuận Thiên</option>
+              </Input>
+              <Text size={"xl"}>Bot Thuận Thiên sử dụng phương pháp: Reverse </Text>
             </Tabs.Panel>
             <Tabs.Panel value="messages" pt="xs">
-              <Box w={"100%"} h={200} pos="relative">
-                <Image src={"/assets/images/tele.png"} alt="" fill />
-              </Box>
+              <MultiSelect
+               variant="unstyled"
+                  data={data}
+                  styles={(theme)=>({
+                        value: {
+                              background: "transparent",
+                              border: `1px solid green`,
+                              borderRadius: "25px",
+                              color: theme.colors.green[6]
+                        },
+                        defaultValueRemove: {
+                              color: theme.colors.green[6]
+                        }
+                  })}
+                  label={<Title size={24} mt="xl">
+                  Bước Tiếp theo, chọn kênh telegram
+                    </Title>}
+                  placeholder="Select..."
+            />
+             
             </Tabs.Panel>
           </Tabs>
-          <Box w={"100%"} h={500} pos="relative">
-            <Image src={"/assets/images/belowtab.png"} alt="" fill />
-          </Box>
+                                <Group>
+          <Title size={24} mt="lg">
+             Sau đó, chọn loại QLV để tăng hiệu quả đầu tư
+                    </Title>
+                    <Input
+                component="select"
+                variant="unstyled"
+                styles={(theme)=> ({
+                  input: {
+                        color:theme.colors.green[6],
+                        fontWeight: 700
+                  }
+                })}
+                size={"xl"}
+                w={"100%"}
+                rightSection={<IconChevronDown size={14} stroke={1.5} />}>
+                <option value="1">BOT Thuận Thiên</option>
+                  </Input>
+                  <Text size={"xl"} >QLV Đều lệnh 1 sử dụng phương pháp: All orders</Text>
+                  <Button
+              size="xl" fullWidth radius="md" color="dark.8">
+              Chạy kiếm tra gói (0/20)
+            </Button>
+            </Group>
+            <Link href="#" style={{width:"100%"}}><Text color="dark.8" align="center">Lịch sử kiểm tra gói (0)</Text></Link>
+            </Group>
         </Grid.Col>
       </Grid>
     </Container>
