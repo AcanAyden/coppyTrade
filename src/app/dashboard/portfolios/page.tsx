@@ -168,8 +168,8 @@ const Page = () => {
                <Image style={{borderRadius: "25px"}} src={'/assets/images/banner-2.png'} alt={''} width={360} height={297} />
                   <Title style={{display: "inline", alignItems: "center", textAlign: "center"}} mt={20}>Danh mục đàu tư của bạn đang trống</Title>
                   <Text mt={20}>Bắt đầu khám phá các cơ hội đầu tư và kiếm lợi nhuận ngay hôm nay.</Text>
-                    <Button radius="md"fullWidth size="xl" mt={20} color="green.6">Tạo gói đầu tư ngay</Button>
-                    <CopyButton value="https://mantine.dev" mt={20} >
+                    <Button radius="md"fullWidth size="xl" my={20} color="green.6">Tạo gói đầu tư ngay</Button>
+                    <CopyButton value="https://mantine.dev" >
       {({ copied, copy }) => (
             <Button fullWidth color={"dark"} onClick={copy} variant="subtle" leftIcon={<IconCirclePlus/>}>
           Sao chép gói đầu tư được chia sẻ
