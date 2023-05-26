@@ -3,6 +3,7 @@ import { Header } from '@/components/Dashboard/Header'
 import { Navbar } from '@/components/Dashboard/Navbar'
 import { ManageFollower } from '@/components/Modal/Manage/ManageFollower'
 import Notice from '@/components/Modal/Notice'
+import { TradeWallet } from '@/components/Modal/TradeWallet/TradeWallet'
 import { DrawerWithdraw } from '@/components/Modal/Withdraw/DrawerWithdraw'
 import { AppShell } from '@mantine/core'
 import React from 'react'
@@ -19,7 +20,8 @@ const Layout = ({ children }: React.PropsWithChildren) => {
       {children}
       </div>
               {/* <ManageFollower/> */}
-              <DrawerWithdraw/>
+              {/* <DrawerWithdraw/> */}
+              <TradeWallet/>
     </AppShell>
   )
 }
