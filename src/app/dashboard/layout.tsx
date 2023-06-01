@@ -23,7 +23,7 @@ const Layout = ({ children }: React.PropsWithChildren) => {
               {/* <ManageFollower/> */}
               {/* <DrawerWithdraw/> */}
               {/* <TradeWallet/> */}
-              <SwapCoin/>
+              {/* <SwapCoin/> */}
     </AppShell>
   )
 }
